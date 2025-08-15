@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multicomm.ai - Comunicación Empresarial Impulsada por IA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .main-nav {
+            background: #ffffff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4B8BF5;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #4B8BF5;
+        }
+
+        /* Dropdown Styles */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-trigger {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-dropdown-trigger::after {
+            content: '▼';
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-dropdown:hover .nav-dropdown-trigger::after {
+            transform: rotate(180deg);
+        }
+
+        /* FIXED Dropdown Content */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 250px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+            z-index: 1001;
+            
+            /* FIX: Añadir transición y visibilidad */
+            visibility: hidden;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.2s ease-in-out;
+            transition-delay: 0s;
+        }
+
+        .nav-dropdown:hover .dropdown-content {
+            display: block;
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0s;
+        }
+
+        /* Delay al salir */
+        .nav-dropdown:not(:hover) .dropdown-content {
+            transition-delay: 0.3s;
+        }
+
+        /* Puente invisible para evitar cierre accidental */
+        .nav-dropdown::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: transparent;
+            z-index: 999;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #1a1a1a;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background: #f5f5f5;
+            color: #4B8BF5;
+        }
+
+        .highlight-orange {
+            color: #E07B4F !important;
+            font-weight: 600;
+        }
+
+        .highlight-orange:hover {
+            background: rgba(224, 123, 79, 0.1) !important;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            gap: 5px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 2px solid transparent;
+            padding: 5px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .lang-btn:hover {
+            border-color: #4B8BF5;
+        }
+
+        .lang-btn.active {
+            border-color: #4B8BF5;
+        }
+
+        .lang-btn svg {
+            display: block;
+        }
+
+        .btn-primary {
+            background: #4B8BF5;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #3a7ae4;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(75, 139, 245, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #4B8BF5;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        /* Workflow Section - Updated Styles */
+        .workflow-section {
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .connection-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #4ECDC4;
+            border-radius: 50%;
+            z-index: 3;
+        }
+
+        @keyframes moveAlong1 {
+            0% { left: 25%; top: 50%; }
+            100% { left: 75%; top: 50%; }
+        }
+
+        @keyframes moveAlong2 {
+            0% { left: 40%; top: 30%; }
+            100% { left: 50%; top: 80%; }
+        }
+
+        @keyframes moveAlong3 {
+            0% { left: 50%; top: 20%; }
+            100% { left: 75%; top: 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: #4B8BF5;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Other Projects Section */
+        .other-projects-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-card.featured {
+            border: 2px solid #E07B4F;
+        }
+
+        .icon-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon {
+            font-size: 2.5rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        .project-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-link {
+            color: #4B8BF5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .badge-live {
+            background: #E07B4F;
+            color: white;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            margin-left: 0.5rem;
+            font-weight: 700;
+        }
+
+        /* Future Projects Section */
+        .future-projects-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid #4B8BF5;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #4B8BF5;
+            margin: 1rem 0;
+        }
+
+        .pricing-card .price span {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .pricing-features li {
+            padding: 0.5rem 0;
+            color: #666;
+        }
+
+        /* Investor Relations Section */
+        .investor-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .metric-card {
+            text-align: center;
+        }
+
+        .metric-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4B8BF5;
+        }
+
+        .metric-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.7;
+        }
+
+        /* Beta CTA */
+        .beta-cta {
+            background: linear-gradient(135deg, #4B8BF5 0%, #96CEB4 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+            margin-top: 3rem;
+        }
+
+        .beta-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .beta-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .services-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .language-switcher {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 1000;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/es/">Multicomm.ai</a>
+            </div>
+
+            <div class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#precios">Precios</a>
+                <a href="#inversores">Relaciones con Inversores</a>
+
+                <!-- Other Projects Dropdown -->
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-dropdown-trigger">Otros Proyectos</a>
+                    <div class="dropdown-content">
+                        <a href="#noticias-ia">Noticias IA</a>
+                        <a href="https://multicomm-ai.vercel.app/como-sucedio/capture-history.html" class="highlight-orange">Cómo Sucedió (En Vivo)</a>
+                        <a href="#analitica-predictiva">Analítica Predictiva</a>
+                    </div>
+                </div>
+
+                <!-- Future Projects Dropdown -->
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-dropdown-trigger">Proyectos Futuros</a>
+                    <div class="dropdown-content">
+                        <a href="#asistente-mecanico">Asistente Mecánico</a>
+                        <a href="#dentista-ia">Dentista IA</a>
+                        <a href="#codigo-legal">Código Legal</a>
+                        <a href="#inteligencia-financiera">Inteligencia Financiera Integrada</a>
+                    </div>
+                </div>
+
+                <a href="#contacto">Contacto</a>
+            </div>
+
+            <div class="nav-actions">
+                <div class="language-switcher">
+                    <button class="lang-btn" data-lang="en" aria-label="English">
+                        <svg width="24" height="16" viewBox="0 0 1235 650">
+                            <rect width="1235" height="650" fill="#B22234"/>
+                            <g fill="#FFFFFF">
+                                <rect y="50" width="1235" height="50"/>
+                                <rect y="150" width="1235" height="50"/>
+                                <rect y="250" width="1235" height="50"/>
+                                <rect y="350" width="1235" height="50"/>
+                                <rect y="450" width="1235" height="50"/>
+                                <rect y="550" width="1235" height="50"/>
+                            </g>
+                            <rect width="494" height="350" fill="#3C3B6E"/>
+                        </svg>
+                    </button>
+                    <button class="lang-btn active" data-lang="es" aria-label="Español">
+                        <svg width="24" height="16" viewBox="0 0 750 500">
+                            <rect width="750" height="500" fill="#C60B1E"/>
+                            <rect y="125" width="750" height="250" fill="#FFC400"/>
+                        </svg>
+                    </button>
+                </div>
+                <button class="btn-primary">Comenzar</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Reserva una cita. Actualiza un CRM. Envía un mensaje. Todo en un flujo de trabajo.</h1>
+            <p>Los flujos son el cerebro de tu negocio. Nos integramos en tus sistemas existentes, ya sea un programador, ERP o CRM, para que tus agentes no solo hablen, sino que tomen acción.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary">Probar Demo en Vivo</button>
+                <button class="btn-secondary">Programar Consulta</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="workflow-section" style="background: linear-gradient(135deg, #1a1a3e 0%, #3d1a4a 50%, #1a1a3e 100%);">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Tu Flujo de Trabajo IA en Acción</h2>
+            <div style="position: relative; height: 500px; max-width: 900px; margin: 0 auto;">
+                <!-- Connection lines will be drawn here -->
+                <svg style="position: absolute; width: 100%; height: 100%; z-index: 1;">
+                    <line x1="25%" y1="50%" x2="40%" y2="25%" stroke="rgba(78, 205, 196, 0.3)" stroke-width="2"/>
+                    <line x1="40%" y1="25%" x2="60%" y2="15%" stroke="rgba(78, 205, 196, 0.3)" stroke-width="2"/>
+                    <line x1="60%" y1="15%" x2="75%" y2="50%" stroke="rgba(78, 205, 196, 0.3)" stroke-width="2"/>
+                    <line x1="25%" y1="50%" x2="50%" y2="80%" stroke="rgba(78, 205, 196, 0.3)" stroke-width="2"/>
+                    <line x1="50%" y1="80%" x2="75%" y2="50%" stroke="rgba(78, 205, 196, 0.3)" stroke-width="2"/>
+                    <line x1="40%" y1="25%" x2="50%" y2="80%" stroke="rgba(78, 205, 196, 0.3)" stroke-width="2"/>
+                    <line x1="60%" y1="15%" x2="50%" y2="80%" stroke="rgba(78, 205, 196, 0.3)" stroke-width="2"/>
+                    <line x1="25%" y1="50%" x2="75%" y2="50%" stroke="rgba(78, 205, 196, 0.3)" stroke-width="2"/>
+                </svg>
+
+                <!-- Workflow nodes with larger icons -->
+                <div style="position: absolute; left: 25%; top: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px; background: #FF8A56; border-radius: 30px; display: flex; align-items: center; justify-content: center; font-size: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 2;">
+                    📞
+                </div>
+                <div style="position: absolute; left: 40%; top: 25%; transform: translate(-50%, -50%); width: 120px; height: 120px; background: #BB8FCE; border-radius: 30px; display: flex; align-items: center; justify-content: center; font-size: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 2;">
+                    🤖
+                </div>
+                <div style="position: absolute; left: 60%; top: 15%; transform: translate(-50%, -50%); width: 120px; height: 120px; background: #5B9FEF; border-radius: 30px; display: flex; align-items: center; justify-content: center; font-size: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 2;">
+                    📊
+                </div>
+                <div style="position: absolute; left: 50%; top: 80%; transform: translate(-50%, -50%); width: 120px; height: 120px; background: #4ECDC4; border-radius: 30px; display: flex; align-items: center; justify-content: center; font-size: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 2;">
+                    💬
+                </div>
+                <div style="position: absolute; left: 75%; top: 50%; transform: translate(-50%, -50%); width: 120px; height: 120px; background: #FF8A56; border-radius: 30px; display: flex; align-items: center; justify-content: center; font-size: 3rem; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 2;">
+                    ✅
+                </div>
+
+                <!-- Animated dots on connections -->
+                <div class="connection-dot" style="animation: moveAlong1 3s infinite linear;"></div>
+                <div class="connection-dot" style="animation: moveAlong2 3s infinite linear;"></div>
+                <div class="connection-dot" style="animation: moveAlong3 3s infinite linear;"></div>
+            </div>
+            <p style="text-align: center; color: rgba(255,255,255,0.9); max-width: 800px; margin: 2rem auto 0;">
+                Nuestras herramientas integrales de comunicación permiten a las empresas llegar a los clientes a través de sus canales preferidos.
+                Desde llamadas de voz automatizadas con síntesis de habla natural hasta campañas SMS inteligentes, garantizamos que tu mensaje se entregue de manera efectiva.
+            </p>
+        </div>
+    </section>
+
+    <!-- Core Services -->
+    <section class="services-section">
+        <div class="container">
+            <h2 class="section-title">Nuestros Servicios Principales</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon" style="background: #4ECDC4;">📞</div>
+                    <h3>Automatización de Voz y SMS</h3>
+                    <p>Llamadas automatizadas y mensajería de texto con enrutamiento inteligente y procesamiento de lenguaje natural.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background: #96CEB4;">📧</div>
+                    <h3>Inteligencia de Email</h3>
+                    <p>Campañas de email inteligentes con personalización impulsada por IA y respuestas automatizadas.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background: #F7DC6F;">📅</div>
+                    <h3>Programación Inteligente</h3>
+                    <p>Reserva de citas sin problemas con integración de calendario y recordatorios automatizados.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background: #BB8FCE;">🎬</div>
+                    <h3>Inteligencia de Video IA</h3>
+                    <p>Crea videos personalizados generados por IA para compromiso del cliente y campañas de marketing.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background: #85C1E2;">🌍</div>
+                    <h3>Soporte Multi-idioma</h3>
+                    <p>Comunícate sin problemas en más de 8 idiomas con traducción en tiempo real.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background: #F8C471;">🎙️</div>
+                    <h3>Voz IA Ultra-Realista</h3>
+                    <p>Síntesis de voz similar a la humana para llamadas y mensajes con detección de emociones.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background: #ABEBC6;">🤖</div>
+                    <h3>Integración OpenAI</h3>
+                    <p>Comprensión avanzada del lenguaje y capacidades de conversación natural impulsadas por ChatGPT.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background: #FAD7A0;">💭</div>
+                    <h3>Análisis de Sentimientos</h3>
+                    <p>Detección de emociones en tiempo real y monitoreo de satisfacción del cliente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Projects -->
+    <section class="other-projects-section" id="otros-proyectos">
+        <div class="container">
+            <h2 class="section-title">Otros Proyectos</h2>
+            <div class="projects-grid">
+                <div class="project-card" onclick="location.href='#noticias-ia'">
+                    <div class="icon-container" style="background: #F7B731;">
+                        <span class="icon">📰</span>
+                    </div>
+                    <h3>Noticias IA</h3>
+                    <p>Descubrimiento exclusivo de noticias generadas por IA. Nuestros periodistas IA trabajan 24/7 para descubrir historias que los medios tradicionales pasan por alto.</p>
+                    <a href="#noticias-ia" class="project-link">Explorar Noticias IA →</a>
+                </div>
+
+                <div class="project-card featured" onclick="window.open('https://multicomm-ai.vercel.app/como-sucedio/capture-history.html', '_blank')">
+                    <div class="icon-container" style="background: #E07B4F;">
+                        <span class="icon">🎥</span>
+                    </div>
+                    <h3>Cómo Sucedió <span class="badge-live">EN VIVO</span></h3>
+                    <p>Experimenta la historia a través de narrativas basadas en datos. Transforma datos históricos en historias interactivas y convincentes.</p>
+                    <a href="https://multicomm-ai.vercel.app/como-sucedio/capture-history.html" class="project-link" style="color: #E07B4F;" target="_blank">Ver Video Demo →</a>
+                </div>
+
+                <div class="project-card" onclick="location.href='#analitica-predictiva'">
+                    <div class="icon-container" style="background: #5F27CD;">
+                        <span class="icon">📈</span>
+                    </div>
+                    <h3>Analítica Predictiva</h3>
+                    <p>Aprovecha el aprendizaje automático para anticipar las necesidades del cliente y optimizar las estrategias de comunicación en tiempo real.</p>
+                    <a href="#analitica-predictiva" class="project-link">Aprender Más →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Projects -->
+    <section class="future-projects-section">
+        <div class="container">
+            <h2 class="section-title">Proyectos Futuros</h2>
+            <div class="projects-grid" style="grid-template-columns: repeat(4, 1fr); max-width: 1200px; margin: 0 auto;">
+                <div class="project-card">
+                    <div class="icon-container" style="background: #FF6B6B;">
+                        <span class="icon">🔧</span>
+                    </div>
+                    <h3>Asistente Mecánico</h3>
+                    <p>Diagnósticos automotrices impulsados por IA con alertas de mantenimiento predictivo y estimaciones de costos.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="icon-container" style="background: #4ECDC4;">
+                        <span class="icon">🦷</span>
+                    </div>
+                    <h3>Dentista IA</h3>
+                    <p>Revoluciona el cuidado dental con diagnósticos impulsados por IA y gestión automatizada de pacientes.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="icon-container" style="background: #45B7D1;">
+                        <span class="icon">⚖️</span>
+                    </div>
+                    <h3>Código Legal</h3>
+                    <p>Análisis inteligente de documentos legales con extracción automática de cláusulas e identificación de riesgos.</p>
+                </div>
+
+                <div class="project-card">
+                    <div class="icon-container" style="background: #96CEB4;">
+                        <span class="icon">📊</span>
+                    </div>
+                    <h3>Inteligencia Financiera Integrada</h3>
+                    <p>Combina analítica predictiva, inteligencia de documentos y pruebas de estrés en una plataforma.</p>
+                </div>
+            </div>
+
+            <div class="beta-cta">
+                <h2>Sé Parte del Futuro</h2>
+                <p>Únete a nuestro programa beta y obtén acceso anticipado a funciones de vanguardia antes de su lanzamiento.</p>
+                <button class="btn-secondary">Unirse al Programa Beta</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing-section" id="precios">
+        <div class="container">
+            <h2 class="section-title">Precios Simples y Transparentes</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Inicial</h3>
+                    <p>Perfecto para pequeñas empresas que están comenzando</p>
+                    <div class="price">$99<span>/mes</span></div>
+                    <ul class="pricing-features">
+                        <li>Hasta 1,000 mensajes/mes</li>
+                        <li>Funciones básicas de automatización</li>
+                        <li>Soporte por email</li>
+                        <li>Acceso a API</li>
+                        <li>2 miembros del equipo</li>
+                    </ul>
+                    <button class="btn-primary">Comenzar</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3>Profesional</h3>
+                    <p>Para equipos en crecimiento que necesitan más poder</p>
+                    <div class="price">$299<span>/mes</span></div>
+                    <ul class="pricing-features">
+                        <li>Hasta 10,000 mensajes/mes</li>
+                        <li>Funciones avanzadas de IA</li>
+                        <li>Soporte prioritario</li>
+                        <li>Integraciones personalizadas</li>
+                        <li>Panel de análisis</li>
+                        <li>10 miembros del equipo</li>
+                    </ul>
+                    <button class="btn-primary">Comenzar</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Empresa</h3>
+                    <p>Soluciones personalizadas para grandes organizaciones</p>
+                    <div class="price">Personalizado</div>
+                    <ul class="pricing-features">
+                        <li>Mensajes ilimitados</li>
+                        <li>Gerente de cuenta dedicado</li>
+                        <li>Soporte telefónico 24/7</li>
+                        <li>Entrenamiento de IA personalizado</li>
+                        <li>Garantía SLA</li>
+                        <li>Implementación local</li>
+                    </ul>
+                    <button class="btn-primary">Contactar Ventas</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investor Relations -->
+    <section class="investor-section" id="inversores">
+        <div class="container">
+            <h2 class="section-title">Relaciones con Inversores</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 3rem;">
+                Multicomm.ai está revolucionando la comunicación empresarial a través de la automatización impulsada por IA.
+                Nuestra plataforma se integra perfectamente con los sistemas empresariales existentes para crear flujos de trabajo inteligentes.
+            </p>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon">📈</div>
+                    <div class="metric-value">250%</div>
+                    <div class="metric-label">Crecimiento Anual</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">🏢</div>
+                    <div class="metric-value">150+</div>
+                    <div class="metric-label">Clientes Empresariales</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">💬</div>
+                    <div class="metric-value">10M+</div>
+                    <div class="metric-label">Mensajes/Mes</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-icon">🌍</div>
+                    <div class="metric-value">25</div>
+                    <div class="metric-label">Países Atendidos</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <h3>Oportunidad de Inversión</h3>
+                <p style="color: #666; margin: 1rem 0;">
+                    Actualmente estamos levantando nuestra ronda Serie B para acelerar la expansión global y mejorar nuestras capacidades de IA.
+                </p>
+                <button class="btn-primary">Contactar Relaciones con Inversores</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Multicomm.ai. Todos los derechos reservados.</p>
+            <p>Contacto: inversores@multicomm.ai</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript para cambio de idioma y dropdowns mejorados -->
+    <script>
+    // Detección y redirección de idioma para GitHub/Vercel
+    document.addEventListener('DOMContentLoaded', function() {
+        // Obtener idioma actual de la URL
+        const currentPath = window.location.pathname;
+        const currentLang = currentPath.includes('/es/') ? 'es' : 'en';
+        
+        // Si estamos en la raíz, redirigir a inglés por defecto
+        if (currentPath === '/' || currentPath === '/index.html') {
+            const savedLang = localStorage.getItem('preferred_language');
+            const browserLang = navigator.language.substring(0, 2);
+            // Siempre redirigir a inglés por defecto si no hay preferencia guardada
+            const preferredLang = savedLang || 'en';
+            
+            window.location.replace(`/${preferredLang}/`);
+            return;
+        }
+        
+        // Actualizar botones de idioma
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            if (btn.dataset.lang === currentLang) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+        
+        // Cambio de idioma
+        document.querySelectorAll('[data-lang]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const newLang = this.dataset.lang;
+                
+                // Guardar preferencia
+                localStorage.setItem('preferred_language', newLang);
+                
+                // Construir nueva URL
+                let newPath = currentPath;
+                
+                // Si estamos en /en/ o /es/, reemplazar
+                if (currentPath.includes('/en/')) {
+                    newPath = currentPath.replace('/en/', `/${newLang}/`);
+                } else if (currentPath.includes('/es/')) {
+                    newPath = currentPath.replace('/es/', `/${newLang}/`);
+                } else {
+                    // Si no hay idioma en la URL, añadirlo
+                    newPath = `/${newLang}${currentPath}`;
+                }
+                
+                // Redirigir
+                window.location.href = newPath;
+            });
+        });
+    });
+
+    // Fix para dropdowns mejorados
+    (function() {
+        const dropdowns = document.querySelectorAll('.nav-dropdown');
+        let timeout;
+        
+        dropdowns.forEach(dropdown => {
+            const content = dropdown.querySelector('.dropdown-content');
+            
+            dropdown.addEventListener('mouseenter', () => {
+                clearTimeout(timeout);
+                content.style.display = 'block';
+                setTimeout(() => {
+                    content.style.visibility = 'visible';
+                    content.style.opacity = '1';
+                    content.style.transform = 'translateY(0)';
+                }, 10);
+            });
+            
+            dropdown.addEventListener('mouseleave', () => {
+                timeout = setTimeout(() => {
+                    content.style.visibility = 'hidden';
+                    content.style.opacity = '0';
+                    content.style.transform = 'translateY(-10px)';
+                    setTimeout(() => {
+                        content.style.display = 'none';
+                    }, 200);
+                }, 300);
+            });
+        });
+        
+        // Prevenir cierre al hacer click en trigger
+        document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault();
+            });
+        });
+    })();
+    
+    // Fix para elementos no clickeables en la sección central
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.style.cursor = 'pointer';
+        card.style.position = 'relative';
+        card.style.zIndex = '10';
+    });
+    
+    // Smooth scroll para enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Animación para métricas cuando son visibles
+    const observerOptions = {
+        threshold: 0.5
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('.metric-card').forEach(card => {
+        observer.observe(card);
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "routes": [
+    {
+      "src": "^/$",
+      "dest": "/en/index.html"
+    },
+    {
+      "src": "^/en/?$",
+      "dest": "/en/index.html"
+    },
+    {
+      "src": "^/es/?$", 
+      "dest": "/es/index.html"
+    },
+    {
+      "src": "^/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}
