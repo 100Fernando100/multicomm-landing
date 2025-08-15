@@ -810,5 +810,55 @@
             <p>Contact: investors@multicomm.ai</p>
         </div>
     </footer>
-</body>
-</html>
+
+<script>
+const currentPath = window.location.pathname;
+if (currentPath === '/' || currentPath === '/index.html') {
+    const savedLang = localStorage.getItem('preferred_language') || 'en';
+    window.location.replace(`/${savedLang}/`);
+}
+
+<script>
+const currentPath = window.location.pathname;
+if (currentPath === '/' || currentPath === '/index.html') {
+    const savedLang = localStorage.getItem('preferred_language') || 'en';
+    window.location.replace(`/${savedLang}/`);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    let timeout;
+    
+    dropdowns.forEach(dropdown => {
+        const content = dropdown.querySelector('.dropdown-content');
+        if (!content) return;
+        
+        dropdown.addEventListener('mouseenter', () => {
+            clearTimeout(timeout);
+            content.style.display = 'block';
+            setTimeout(() => {
+                content.style.visibility = 'visible';
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }, 10);
+        });
+        
+        dropdown.addEventListener('mouseleave', () => {
+            timeout = setTimeout(() => {
+                content.style.visibility = 'hidden';
+                content.style.opacity = '0';
+                content.style.transform = 'translateY(-10px)';
+                setTimeout(() => {
+                    content.style.display = 'none';
+                }, 200);
+            }, 300);
+        });
+    });
+    
+    document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+        trigger.addEventListener('click', function(e) {
+            e.preventDefault();
+        });
+    });
+});
+</script>
