@@ -12,10 +12,17 @@
         html {
             scroll-behavior: smooth;
         }
+        /* CAMBIOS PRINCIPALES AQUÍ */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0F172A; /* Color de fondo principal */
+            background-color: #FFFFFF; /* Fondo cambiado a blanco */
         }
+        .card-bg {
+            background-color: #F8FAFC; /* Color de tarjeta cambiado a un gris muy claro */
+            border: 1px solid #E2E8F0; /* Borde añadido a las tarjetas */
+        }
+        /* FIN DE CAMBIOS PRINCIPALES */
+
         .gradient-text {
             background: linear-gradient(90deg, #6366F1, #A855F7);
             -webkit-background-clip: text;
@@ -25,9 +32,6 @@
         }
         .gradient-bg {
             background: linear-gradient(90deg, #6366F1, #A855F7);
-        }
-        .card-bg {
-            background-color: #1E293B; /* Color de las tarjetas */
         }
         .icon-circle {
             background-color: rgba(139, 92, 246, 0.1);
@@ -42,7 +46,7 @@
         }
     </style>
 </head>
-<body class="text-slate-200">
+<body class="text-slate-800"> <!-- Color de texto principal cambiado a oscuro -->
 
     <!-- Contenedor principal -->
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
@@ -52,7 +56,7 @@
             <h1 class="text-4xl md:text-5xl font-bold mb-4">
                 Estás en el lugar correcto para <span class="gradient-text">comenzar</span>
             </h1>
-            <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">
+            <p class="text-lg md:text-xl text-slate-500 max-w-3xl mx-auto"> <!-- Color de texto secundario cambiado -->
                 Unos simples pasos te separan de crear un legado eterno o una conversación con tu futuro. Elige tu camino.
             </p>
         </header>
@@ -62,23 +66,19 @@
             <h2 class="text-3xl font-bold text-center mb-10">Primero, cuéntanos tu propósito 🕰️</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 
-                <!-- Tarjeta: Para mi yo del futuro -->
-                <!-- NOTA: Reemplaza la URL de abajo con tu enlace de grabación de HeyGen -->
-                <a href="https://app.heygen.com/recorder" target="_blank" rel="noopener noreferrer" class="purpose-card card-bg p-8 rounded-2xl border border-slate-700 flex flex-col text-center">
+                <a href="https://app.heygen.com/recorder" target="_blank" rel="noopener noreferrer" class="purpose-card card-bg p-8 rounded-2xl flex flex-col text-center">
                     <div class="text-6xl mb-4">🔮</div>
                     <h3 class="text-2xl font-bold mb-3">Para Mi Yo del Futuro</h3>
-                    <p class="text-slate-400 flex-grow">
+                    <p class="text-slate-500 flex-grow"> <!-- Color de texto secundario cambiado -->
                         Grabaré mis pensamientos y metas de hoy. Quiero que mi "yo" del futuro pueda conversar con la persona que soy ahora, analizar las decisiones que tomé y preguntarme qué hubiera cambiado.
                     </p>
                     <span class="mt-8 inline-block gradient-bg text-white font-bold py-3 px-6 rounded-full text-lg">Comenzar a Grabar Ahora</span>
                 </a>
 
-                <!-- Tarjeta: Para dejar un legado -->
-                <!-- NOTA: Reemplaza la URL de abajo con tu enlace de grabación de HeyGen -->
-                <a href="https://app.heygen.com/recorder" target="_blank" rel="noopener noreferrer" class="purpose-card card-bg p-8 rounded-2xl border border-slate-700 flex flex-col text-center">
+                <a href="https://app.heygen.com/recorder" target="_blank" rel="noopener noreferrer" class="purpose-card card-bg p-8 rounded-2xl flex flex-col text-center">
                     <div class="text-6xl mb-4">👨‍👩‍👧‍👦</div>
                     <h3 class="text-2xl font-bold mb-3">Para Dejar un Legado</h3>
-                    <p class="text-slate-400 flex-grow">
+                    <p class="text-slate-500 flex-grow"> <!-- Color de texto secundario cambiado -->
                         Grabaré mis historias para que mis hijos y nietos puedan hablar conmigo cuando ya no esté. Es mi forma de asegurar que mis experiencias no se olviden y que mi familia se sienta acompañada en el futuro.
                     </p>
                     <span class="mt-8 inline-block gradient-bg text-white font-bold py-3 px-6 rounded-full text-lg">Comenzar a Grabar Ahora</span>
@@ -91,8 +91,7 @@
             <h2 class="text-3xl font-bold text-center mb-10">Consejos para una Grabación Perfecta ✨</h2>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
 
-                <!-- Columna de Audio -->
-                <div class="card-bg p-8 rounded-2xl border border-slate-700">
+                <div class="card-bg p-8 rounded-2xl">
                     <h3 class="text-2xl font-bold mb-6 text-center">🎙️ Tu Voz es tu Esencia</h3>
                     <ul class="space-y-5">
                         <li class="flex items-start">
@@ -101,7 +100,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold">Busca el Silencio</h4>
-                                <p class="text-slate-400">Graba en una habitación tranquila, lejos de ruidos. El silencio hará que tu voz brille.</p>
+                                <p class="text-slate-500">Graba en una habitación tranquila, lejos de ruidos. El silencio hará que tu voz brille.</p>
                             </div>
                         </li>
                         <li class="flex items-start">
@@ -110,14 +109,13 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold">Mira Directo a la Lente</h4>
-                                <p class="text-slate-400">Imagina que la lente de la cámara son los ojos de la persona con la que hablas.</p>
+                                <p class="text-slate-500">Imagina que la lente de la cámara son los ojos de la persona con la que hablas.</p>
                             </div>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Columna de Video -->
-                <div class="card-bg p-8 rounded-2xl border border-slate-700">
+                <div class="card-bg p-8 rounded-2xl">
                     <h3 class="text-2xl font-bold mb-6 text-center">🎥 Tu Mirada Conecta</h3>
                     <ul class="space-y-5">
                         <li class="flex items-start">
@@ -126,7 +124,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold">Habla con Naturalidad</h4>
-                                <p class="text-slate-400">No necesitas actuar. Habla como si le contaras una historia a un amigo. Tu ritmo y pausas son importantes.</p>
+                                <p class="text-slate-500">No necesitas actuar. Habla como si le contaras una historia a un amigo. Tu ritmo y pausas son importantes.</p>
                             </div>
                         </li>
                         <li class="flex items-start">
@@ -135,7 +133,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold">La Luz es tu Amiga</h4>
-                                <p class="text-slate-400">Colócate frente a una ventana o una lámpara para iluminar tu rostro sin sombras.</p>
+                                <p class="text-slate-500">Colócate frente a una ventana o una lámpara para iluminar tu rostro sin sombras.</p>
                             </div>
                         </li>
                     </ul>
@@ -143,13 +141,11 @@
             </div>
         </section>
         
-        <!-- Botón para volver -->
         <div class="text-center mt-16">
-            <a href="https://multicomm-landing.vercel.app/es" class="text-slate-400 hover:text-white transition-colors">
+            <a href="/es/" class="text-slate-500 hover:text-slate-800 transition-colors">
                 &larr; Volver a la página principal
             </a>
         </div>
     </div>
-
 </body>
 </html>
