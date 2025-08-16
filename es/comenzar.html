@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comienza Tu Legado - Crea Tu Legado Digital</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?mode=development"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -96,7 +96,7 @@
                     <ul class="space-y-5">
                         <li class="flex items-start">
                             <div class="flex-shrink-0 icon-circle w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9 9 0 0119 12a9 9 0 01-2.929 9.071 1 1 0 01-1.414-1.414A7 7 0 0017 12a7 7 0 00-2.343-5.657 1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5 5 0 0115 12a5 5 0 01-1.757 3.536 1 1 0 11-1.415-1.415A3 3 0 0013 12a3 3 0 00-.757-2.121 1 1 0 010-1.415z" clip-rule="evenodd" /></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9 9 0 0119 12a9 9 0 01-2.929 9.071a1 1 0 01-1.414-1.414A7 7 0 0017 12a7 7 0 00-2.343-5.657a1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5 5 0 0115 12a5 5 0 01-1.757 3.536a1 1 0 11-1.415-1.415A3 3 0 0013 12a3 3 0 00-.757-2.121a1 1 0 010-1.415z" clip-rule="evenodd" /></svg>
                             </div>
                             <div>
                                 <h4 class="font-semibold">Busca el Silencio</h4>
@@ -139,6 +139,37 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- SECCIÓN DE VIDEOS AÑADIDA AQUÍ -->
+            <div class="mt-12 text-center">
+                <h2 class="text-3xl font-bold mb-10 flex items-center justify-center">
+                    <span class="mr-2">🎥</span> Videos de Ejemplo
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <!-- Video Real con Thumbnail -->
+                    <div class="relative aspect-video bg-black rounded-xl overflow-hidden shadow-lg cursor-pointer" onclick="loadVideo(this, 'A-wX_2w5qO4')">
+                        <img src="https://img.youtube.com/vi/A-wX_2w5qO4/hqdefault.jpg" alt="Video Thumbnail" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-16 h-16 bg-white bg-opacity-80 rounded-full flex items-center justify-center">
+                                <div class="w-0 h-0 border-l-[20px] border-l-purple-500 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Placeholder para próximo video -->
+                    <div class="relative aspect-video bg-gray-100 rounded-xl overflow-hidden shadow-lg border border-gray-200 flex items-center justify-center">
+                        <div class="text-gray-500 text-xl font-medium">🎬 Próximamente más tutoriales</div>
+                    </div>
+                </div>
+
+                <!-- Botón de Comenzar a Grabar Ahora debajo de los videos -->
+                <div class="mt-10">
+                    <a href="https://app.heygen.com/recorder" target="_blank" rel="noopener noreferrer" class="inline-block gradient-bg text-white font-bold py-3 px-10 rounded-full text-lg transition-transform hover:scale-105">
+                        Comenzar a Grabar Ahora
+                    </a>
+                </div>
+            </div>
         </section>
         
         <div class="text-center mt-16">
@@ -147,5 +178,16 @@
             </a>
         </div>
     </div>
+
+    <!-- Script para reproducir videos -->
+    <script>
+        function loadVideo(el, videoId) {
+            el.innerHTML = `
+                <iframe width="100%" height="100%" 
+                src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
+                frameborder="0" allowfullscreen>
+                </iframe>`;
+        }
+    </script>
 </body>
 </html>
