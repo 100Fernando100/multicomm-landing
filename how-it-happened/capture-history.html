@@ -326,19 +326,30 @@
         document.addEventListener('DOMContentLoaded', function() {
             const backButton = document.getElementById('backButton');
             const referrer = document.referrer;
+            const currentUrl = window.location.href;
             
-            // Si vino del sitio en español, volver a español
-            if (referrer.includes('/es/')) {
+            // Primero, intentar detectar el idioma desde la URL actual
+            if (currentUrl.includes('?lang=es') || currentUrl.includes('&lang=es')) {
                 backButton.href = 'https://multicomm-landing.vercel.app/es/';
-            } 
-            // Si vino del sitio en inglés, volver a inglés
-            else if (referrer.includes('/en/')) {
+            }
+            else if (currentUrl.includes('?lang=en') || currentUrl.includes('&lang=en')) {
                 backButton.href = 'https://multicomm-landing.vercel.app/en/';
             }
-            // Por defecto, usar el idioma guardado o inglés
+            // Luego, verificar el referrer
+            else if (referrer.includes('/es')) {
+                backButton.href = 'https://multicomm-landing.vercel.app/es/';
+            } 
+            else if (referrer.includes('/en')) {
+                backButton.href = 'https://multicomm-landing.vercel.app/en/';
+            }
+            // Finalmente, usar el idioma guardado o español por defecto
             else {
-                const savedLang = localStorage.getItem('preferred_language') || 'en';
-                backButton.href = `https://multicomm-landing.vercel.app/${savedLang}/`;
+                const savedLang = localStorage.getItem('preferred_language') || 'es';
+                if (savedLang === 'es') {
+                    backButton.href = 'https://multicomm-landing.vercel.app/es/';
+                } else {
+                    backButton.href = 'https://multicomm-landing.vercel.app/en/';
+                }
             }
             
             // Establecer fechas predeterminadas
