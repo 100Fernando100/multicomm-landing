@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comienza Tu Legado - Crea Tu Legado Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0F172A; /* Color de fondo principal */
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #6366F1, #A855F7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(90deg, #6366F1, #A855F7);
+        }
+        .card-bg {
+            background-color: #1E293B; /* Color de las tarjetas */
+        }
+        .icon-circle {
+            background-color: rgba(139, 92, 246, 0.1);
+            color: #A855F7;
+        }
+        .purpose-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .purpose-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(168, 85, 247, 0.2), 0 10px 10px -5px rgba(168, 85, 247, 0.1);
+        }
+    </style>
+</head>
+<body class="text-slate-200">
+
+    <!-- Contenedor principal -->
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+
+        <!-- Sección 1: Encabezado Principal -->
+        <header class="text-center mb-12 md:mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                Estás en el lugar correcto para <span class="gradient-text">comenzar</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto">
+                Unos simples pasos te separan de crear un legado eterno o una conversación con tu futuro. Elige tu camino.
+            </p>
+        </header>
+
+        <!-- Sección 2: Elige Tu Propósito -->
+        <section class="mb-16 md:mb-20">
+            <h2 class="text-3xl font-bold text-center mb-10">Primero, cuéntanos tu propósito 🕰️</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                
+                <!-- Tarjeta: Para mi yo del futuro -->
+                <!-- NOTA: Reemplaza la URL de abajo con tu enlace de grabación de HeyGen -->
+                <a href="https://app.heygen.com/recorder" target="_blank" rel="noopener noreferrer" class="purpose-card card-bg p-8 rounded-2xl border border-slate-700 flex flex-col text-center">
+                    <div class="text-6xl mb-4">🔮</div>
+                    <h3 class="text-2xl font-bold mb-3">Para Mi Yo del Futuro</h3>
+                    <p class="text-slate-400 flex-grow">
+                        Grabaré mis pensamientos y metas de hoy. Quiero que mi "yo" del futuro pueda conversar con la persona que soy ahora, analizar las decisiones que tomé y preguntarme qué hubiera cambiado.
+                    </p>
+                    <span class="mt-8 inline-block gradient-bg text-white font-bold py-3 px-6 rounded-full text-lg">Comenzar a Grabar Ahora</span>
+                </a>
+
+                <!-- Tarjeta: Para dejar un legado -->
+                <!-- NOTA: Reemplaza la URL de abajo con tu enlace de grabación de HeyGen -->
+                <a href="https://app.heygen.com/recorder" target="_blank" rel="noopener noreferrer" class="purpose-card card-bg p-8 rounded-2xl border border-slate-700 flex flex-col text-center">
+                    <div class="text-6xl mb-4">👨‍👩‍👧‍👦</div>
+                    <h3 class="text-2xl font-bold mb-3">Para Dejar un Legado</h3>
+                    <p class="text-slate-400 flex-grow">
+                        Grabaré mis historias para que mis hijos y nietos puedan hablar conmigo cuando ya no esté. Es mi forma de asegurar que mis experiencias no se olviden y que mi familia se sienta acompañada en el futuro.
+                    </p>
+                    <span class="mt-8 inline-block gradient-bg text-white font-bold py-3 px-6 rounded-full text-lg">Comenzar a Grabar Ahora</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Sección de Consejos para una Grabación Perfecta -->
+        <section id="instructions" class="mb-12 md:mb-16 scroll-mt-20">
+            <h2 class="text-3xl font-bold text-center mb-10">Consejos para una Grabación Perfecta ✨</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
+
+                <!-- Columna de Audio -->
+                <div class="card-bg p-8 rounded-2xl border border-slate-700">
+                    <h3 class="text-2xl font-bold mb-6 text-center">🎙️ Tu Voz es tu Esencia</h3>
+                    <ul class="space-y-5">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 icon-circle w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM14.657 2.929a1 1 0 011.414 0A9 9 0 0119 12a9 9 0 01-2.929 9.071 1 1 0 01-1.414-1.414A7 7 0 0017 12a7 7 0 00-2.343-5.657 1 1 0 010-1.414zm-2.829 2.828a1 1 0 011.415 0A5 5 0 0115 12a5 5 0 01-1.757 3.536 1 1 0 11-1.415-1.415A3 3 0 0013 12a3 3 0 00-.757-2.121 1 1 0 010-1.415z" clip-rule="evenodd" /></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Busca el Silencio</h4>
+                                <p class="text-slate-400">Graba en una habitación tranquila, lejos de ruidos. El silencio hará que tu voz brille.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 icon-circle w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z" /><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" /></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Mira Directo a la Lente</h4>
+                                <p class="text-slate-400">Imagina que la lente de la cámara son los ojos de la persona con la que hablas.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Columna de Video -->
+                <div class="card-bg p-8 rounded-2xl border border-slate-700">
+                    <h3 class="text-2xl font-bold mb-6 text-center">🎥 Tu Mirada Conecta</h3>
+                    <ul class="space-y-5">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 icon-circle w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Habla con Naturalidad</h4>
+                                <p class="text-slate-400">No necesitas actuar. Habla como si le contaras una historia a un amigo. Tu ritmo y pausas son importantes.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 icon-circle w-8 h-8 rounded-full flex items-center justify-center mr-4 mt-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" /></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">La Luz es tu Amiga</h4>
+                                <p class="text-slate-400">Colócate frente a una ventana o una lámpara para iluminar tu rostro sin sombras.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Botón para volver -->
+        <div class="text-center mt-16">
+            <a href="https://multicomm-landing.vercel.app/es" class="text-slate-400 hover:text-white transition-colors">
+                &larr; Volver a la página principal
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
